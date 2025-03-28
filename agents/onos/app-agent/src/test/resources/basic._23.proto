@@ -1,0 +1,19 @@
+# A P4TestGen-generated test case for basic.p4
+metadata: "p4testgen seed: none"
+metadata: "Date generated: 2023-08-18-02:41:02.644"
+metadata: "Current statement coverage: 0.65"
+stmt_cov_bitmap: "\xc0\x7f\xab\x00\x00"
+stmt_cov_size: 37
+
+
+input_packet {
+  packet: "\x03\x80\x00"
+  port: 255
+}
+
+expected_output_packet {
+  packet: "\x00"
+  port: 7
+  packet_mask: "\xFF"
+}
+

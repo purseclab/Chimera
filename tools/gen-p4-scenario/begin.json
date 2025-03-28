@@ -1,0 +1,16 @@
+    "topology": {
+        "controller": "onos",
+        "controllerIp": "127.0.0.1",
+        "configTopo": {
+            "topo": "single",
+            "switch": 1,
+            "host": 2,
+            "chassis-config-file": "$STRATUM_HOME/stratum/hal/bin/bmv2/chassis_config.pb.txt"
+        }
+    },
+    "actions": [
+        {
+            "action": "p4test",
+            "content": {
+                "id": "A",
+                "controller": "onos",

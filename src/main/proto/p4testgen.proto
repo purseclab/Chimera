@@ -1,0 +1,103 @@
+// P4Testgen Protobuf template.
+syntax = "proto3";
+
+package p4testgen;
+
+import "p4/v1/p4runtime-fuzz.proto";
+
+service P4FuzzGuide {
+    rpc Hello(HealthCheckRequest) returns (HealthCheckResponse) {}
+    rpc GetP4Name(P4NameRequest) returns (P4NameReply) {}
+    rpc GetP4Coverage(P4CoverageRequest) returns (P4CoverageReply) {}
+    rpc RecordP4Testgen(P4CoverageRequest) returns (P4CoverageReply) {}
+    rpc GetP4Statement(P4StatementRequest) returns (P4StatementReply) {}
+    rpc GenRuleP4Testgen(P4CoverageRequest) returns (P4CoverageReply) {}
+}
+
+message HealthCheckRequest {
+    string service = 1;
+}
+
+message HealthCheckResponse {
+    int32 status = 1;
+}
+
+/*
+  TABLE = 0;
+  MATCH = 1;
+  ACTION = 2;
+  PARAM = 3;
+*/
+
+message P4NameRequest {
+    int32 entity_type = 1;
+    string target = 2;
+}
+
+message P4NameReply {
+    int32 entity_type = 1;
+    repeated string name = 2;
+    repeated string type = 3;
+    repeated int32 bit_len = 4;
+}
+
+message P4CoverageRequest {
+    string device_id = 1;
+    TestCase test_case = 2;
+}
+
+message P4CoverageReply {
+    TestCase test_case = 1;
+}
+
+message P4StatementRequest {
+    int32 idx = 1;
+}
+
+message P4StatementReply {
+    string statement = 1;
+}
+
+message InputPacketAtPort {
+    // The raw bytes of the test packet.
+    bytes packet = 1;
+    // The raw bytes of the port associated with the packet.
+    int32 port = 2;
+}
+
+message OutputPacketAtPort {
+    // The raw bytes of the test packet.
+    bytes packet = 1;
+    // The raw bytes of the port associated with the packet.
+    int32 port = 2;
+    // The don't care mask of the packet.
+    bytes packet_mask = 3;
+}
+
+message PathCoverage {
+    string block_name = 1;
+    bytes path_val = 2;
+    bytes path_size = 3;
+}
+
+message TestCase {
+    // The input packet.
+    InputPacketAtPort input_packet = 1;
+    // The corresponding expected output packet.
+    repeated OutputPacketAtPort expected_output_packet = 2;
+    // The entities (e.g., table entries) to install on the switch before
+    // injecting the `input_packet`.
+    repeated p4.v1.Entity_Fuzz entities = 3;
+    // The trace associated with this particular test.
+    repeated string traces = 4;
+    // Additional metadata and information.
+    repeated string metadata = 5;
+    bytes stmt_cov_bitmap = 6;
+    int32 stmt_cov_size = 7;
+    bytes action_cov_bitmap = 8;
+    int32 action_cov_size = 9;
+    int32 table_size = 10;
+    repeated PathCoverage path_cov = 11;
+    int32 unsupported = 12;
+    repeated string parser_states = 13;
+}

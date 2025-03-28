@@ -1,0 +1,23 @@
+{
+    "name": "p2p-intent",
+    "topology": {
+        "controller": "onos",
+        "controllerIp": "127.0.0.1",
+        "configTopo": {
+            "topo": "linear",
+            "switch": 1,
+            "host": 3
+        }
+    },
+    "actions": [
+        {
+            "action": "p4test",
+            "content": {
+                "id": "A",
+                "controller": "onos",
+                    "ruleFilePath": "/home/intender/Workspace-remote/p4testgen_out/latest/basic/basic._0.proto"
+            },
+            "exec-mode":"sync"
+        }
+    ]
+}

@@ -1,0 +1,550 @@
+# A P4TestGen-generated test case for fabric_v1model.p4
+metadata: "p4testgen seed: none"
+metadata: "Date generated: 2023-08-18-02:38:58.483"
+metadata: "Current statement coverage: 0.36"
+stmt_cov_bitmap: "\x63\xcb\x30\xa2\x00\x00\x00\x00\x18\x00\x49\x36\x00\x00\x06\x41\x82\x4e\xb0\x00\x00\x1e\x1e\x00\x00\x10\x02\x00\x81\x40\x00\x7f\x80\x80\x00\x00"
+stmt_cov_size: 280
+
+
+input_packet {
+  packet: "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xBF\x02\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\x88\xA8\x0F\xFF\x88\x47\x00\x00\x00\x00\x40\x00\x00\x00\x00\x00\x00\x00\x00\x06\xBF\xF9\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF"
+  port: 8
+}
+
+
+entities : [
+  # Table FabricIngress.stats.flows
+  {
+    table_entry {
+      table_id: 41243186
+      table_name: "FabricIngress.stats.flows"
+      priority: 10
+      is_valid_entry: 1
+      # Match field ig_port
+      match {
+        field_id: 6
+        field_name: "ig_port"
+        exact {
+          value: "\x00\x08"
+        }
+      }
+      # Match field ip_proto
+      match {
+        field_id: 3
+        field_name: "ip_proto"
+        ternary {
+          value: "\x06"
+          mask: "\x06"
+        }
+      }
+      # Match field ipv4_dst
+      match {
+        field_id: 2
+        field_name: "ipv4_dst"
+        ternary {
+          value: "\xFF\xFF\xFF\xFF"
+          mask: "\xFF\xFF\xFF\xFF"
+        }
+      }
+      # Match field ipv4_src
+      match {
+        field_id: 1
+        field_name: "ipv4_src"
+        ternary {
+          value: "\xFF\xDF\xFF\xDF"
+          mask: "\xFF\xDF\xFF\xDF"
+        }
+      }
+      # Match field l4_dport
+      match {
+        field_id: 5
+        field_name: "l4_dport"
+        ternary {
+          value: "\xFF\xFF"
+          mask: "\xFF\xFF"
+        }
+      }
+      # Match field l4_sport
+      match {
+        field_id: 4
+        field_name: "l4_sport"
+        ternary {
+          value: "\xFF\xFF"
+          mask: "\xFF\xFF"
+        }
+      }
+      # Action FabricIngress.stats.count
+      action {
+        action {
+          action_id: 21929788
+          action_name: "FabricIngress.stats.count"
+          # Param flow_id
+          params {
+            param_id: 1
+            param_name: "flow_id"
+            value: "\x00\x00"
+          }
+        }
+      }
+    }
+  },
+  # Table FabricIngress.slice_tc_classifier.classifier
+  {
+    table_entry {
+      table_id: 34606298
+      table_name: "FabricIngress.slice_tc_classifier.classifier"
+      priority: 10
+      is_valid_entry: 1
+      # Match field ig_port
+      match {
+        field_id: 1
+        field_name: "ig_port"
+        ternary {
+          value: "\x00\x08"
+          mask: "\x00\x08"
+        }
+      }
+      # Match field ip_proto
+      match {
+        field_id: 4
+        field_name: "ip_proto"
+        ternary {
+          value: "\x06"
+          mask: "\x06"
+        }
+      }
+      # Match field ipv4_dst
+      match {
+        field_id: 3
+        field_name: "ipv4_dst"
+        ternary {
+          value: "\xFF\xFF\xFF\xFF"
+          mask: "\xFF\xFF\xFF\xFF"
+        }
+      }
+      # Match field ipv4_src
+      match {
+        field_id: 2
+        field_name: "ipv4_src"
+        ternary {
+          value: "\xFF\xFF\xFF\xFF"
+          mask: "\xFF\xFF\xFF\xFF"
+        }
+      }
+      # Match field l4_dport
+      match {
+        field_id: 6
+        field_name: "l4_dport"
+        ternary {
+          value: "\xFF\xFF"
+          mask: "\xFF\xFF"
+        }
+      }
+      # Match field l4_sport
+      match {
+        field_id: 5
+        field_name: "l4_sport"
+        ternary {
+          value: "\xFF\xFF"
+          mask: "\xFF\xFF"
+        }
+      }
+      # Action FabricIngress.slice_tc_classifier.set_slice_id_tc
+      action {
+        action {
+          action_id: 23786376
+          action_name: "FabricIngress.slice_tc_classifier.set_slice_id_tc"
+          # Param slice_id
+          params {
+            param_id: 1
+            param_name: "slice_id"
+            value: "\x00"
+          }
+          # Param tc
+          params {
+            param_id: 2
+            param_name: "tc"
+            value: "\x00"
+          }
+        }
+      }
+    }
+  },
+  # Table FabricIngress.filtering.ingress_port_vlan
+  {
+    table_entry {
+      table_id: 43310977
+      table_name: "FabricIngress.filtering.ingress_port_vlan"
+      priority: 10
+      is_valid_entry: 1
+      # Match field ig_port
+      match {
+        field_id: 1
+        field_name: "ig_port"
+        exact {
+          value: "\x00\x08"
+        }
+      }
+      # Match field vlan_is_valid
+      match {
+        field_id: 2
+        field_name: "vlan_is_valid"
+        exact {
+          value: "\x01"
+        }
+      }
+      # Match field vlan_id
+      match {
+        field_id: 3
+        field_name: "vlan_id"
+        ternary {
+          value: "\x0F\xFF"
+          mask: "\x0F\xFF"
+        }
+      }
+      # Action FabricIngress.filtering.deny
+      action {
+        action {
+          action_id: 17164167
+          action_name: "FabricIngress.filtering.deny"
+        }
+      }
+    }
+  },
+  # Table FabricIngress.filtering.fwd_classifier
+  {
+    table_entry {
+      table_id: 49718154
+      table_name: "FabricIngress.filtering.fwd_classifier"
+      priority: 10
+      is_valid_entry: 1
+      # Match field ig_port
+      match {
+        field_id: 1
+        field_name: "ig_port"
+        exact {
+          value: "\x00\x08"
+        }
+      }
+      # Match field ip_eth_type
+      match {
+        field_id: 4
+        field_name: "ip_eth_type"
+        exact {
+          value: "\x08\x00"
+        }
+      }
+      # Match field eth_dst
+      match {
+        field_id: 2
+        field_name: "eth_dst"
+        ternary {
+          value: "\xFF\xFF\xFF\xFF\xFF\xFF"
+          mask: "\xFF\xFF\xFF\xFF\xFF\xFF"
+        }
+      }
+      # Match field eth_type
+      match {
+        field_id: 3
+        field_name: "eth_type"
+        ternary {
+          value: "\x88\x47"
+          mask: "\x88\x47"
+        }
+      }
+      # Action FabricIngress.filtering.set_forwarding_type
+      action {
+        action {
+          action_id: 25032921
+          action_name: "FabricIngress.filtering.set_forwarding_type"
+          # Param fwd_type
+          params {
+            param_id: 1
+            param_name: "fwd_type"
+            value: "\x00"
+          }
+        }
+      }
+    }
+  },
+  # Table FabricIngress.acl.acl
+  {
+    table_entry {
+      table_id: 44104738
+      table_name: "FabricIngress.acl.acl"
+      priority: 10
+      is_valid_entry: 1
+      # Match field eth_dst
+      match {
+        field_id: 2
+        field_name: "eth_dst"
+        ternary {
+          value: "\xFB\xFF\xFF\xFF\xFF\xFF"
+          mask: "\xFB\xFF\xFF\xFF\xFF\xFF"
+        }
+      }
+      # Match field eth_src
+      match {
+        field_id: 3
+        field_name: "eth_src"
+        ternary {
+          value: "\xFF\xFF\xFF\xFF\xFF\xFF"
+          mask: "\xFF\xFF\xFF\xFF\xFF\xFF"
+        }
+      }
+      # Match field eth_type
+      match {
+        field_id: 5
+        field_name: "eth_type"
+        ternary {
+          value: "\x88\x47"
+          mask: "\x88\x47"
+        }
+      }
+      # Match field icmp_code
+      match {
+        field_id: 10
+        field_name: "icmp_code"
+        ternary {
+          value: "\x00"
+          mask: "\x00"
+        }
+      }
+      # Match field icmp_type
+      match {
+        field_id: 9
+        field_name: "icmp_type"
+        ternary {
+          value: "\x00"
+          mask: "\x00"
+        }
+      }
+      # Match field ig_port
+      match {
+        field_id: 1
+        field_name: "ig_port"
+        ternary {
+          value: "\x01\xFF"
+          mask: "\x00\x08"
+        }
+      }
+      # Match field ig_port_type
+      match {
+        field_id: 13
+        field_name: "ig_port_type"
+        ternary {
+          value: "\x00"
+          mask: "\x00"
+        }
+      }
+      # Match field ip_proto
+      match {
+        field_id: 8
+        field_name: "ip_proto"
+        ternary {
+          value: "\x06"
+          mask: "\x06"
+        }
+      }
+      # Match field ipv4_dst
+      match {
+        field_id: 7
+        field_name: "ipv4_dst"
+        ternary {
+          value: "\xFF\xFF\xFF\xFF"
+          mask: "\xFF\xFF\xFF\xFF"
+        }
+      }
+      # Match field ipv4_src
+      match {
+        field_id: 6
+        field_name: "ipv4_src"
+        ternary {
+          value: "\xFF\xFF\xFF\xFF"
+          mask: "\xFF\xFF\xFF\xFF"
+        }
+      }
+      # Match field l4_dport
+      match {
+        field_id: 12
+        field_name: "l4_dport"
+        ternary {
+          value: "\xFF\xFF"
+          mask: "\xFF\xFF"
+        }
+      }
+      # Match field l4_sport
+      match {
+        field_id: 11
+        field_name: "l4_sport"
+        ternary {
+          value: "\xFF\xFF"
+          mask: "\xFF\xFF"
+        }
+      }
+      # Match field vlan_id
+      match {
+        field_id: 4
+        field_name: "vlan_id"
+        ternary {
+          value: "\x0F\xFF"
+          mask: "\x0F\xFF"
+        }
+      }
+      # Action FabricIngress.acl.set_next_id_acl
+      action {
+        action {
+          action_id: 23623126
+          action_name: "FabricIngress.acl.set_next_id_acl"
+          # Param next_id
+          params {
+            param_id: 1
+            param_name: "next_id"
+            value: "\x00\x00\x00\x00"
+          }
+        }
+      }
+    }
+  },
+  # Table FabricIngress.next.hashed
+  {
+    table_entry {
+      table_id: 47960972
+      table_name: "FabricIngress.next.hashed"
+      is_valid_entry: 1
+      # Match field next_id
+      match {
+        field_id: 1
+        field_name: "next_id"
+        exact {
+          value: "\x00\x00\x00\x00"
+        }
+      }
+      # Action FabricIngress.next.output_hashed
+      action {
+        action_selector_name: "FabricIngress.next.hashed_profile"
+        action_profile_action_set {
+          action_profile_actions {
+            action {
+              action_id: 27301117
+              action_name: "FabricIngress.next.output_hashed"
+              # Param port_num
+              params {
+                param_id: 1
+                param_name: "port_num"
+                value: "\x00\x02"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  # Table FabricIngress.next.multicast
+  {
+    table_entry {
+      table_id: 40619180
+      table_name: "FabricIngress.next.multicast"
+      is_valid_entry: 1
+      # Match field next_id
+      match {
+        field_id: 1
+        field_name: "next_id"
+        exact {
+          value: "\x00\x00\x00\x00"
+        }
+      }
+      # Action FabricIngress.next.set_mcast_group_id
+      action {
+        action {
+          action_id: 21629581
+          action_name: "FabricIngress.next.set_mcast_group_id"
+          # Param group_id
+          params {
+            param_id: 1
+            param_name: "group_id"
+            value: "\x00\x08"
+          }
+        }
+      }
+    }
+  },
+  # Table FabricIngress.qos.default_tc
+  {
+    table_entry {
+      table_id: 43965782
+      table_name: "FabricIngress.qos.default_tc"
+      priority: 10
+      is_valid_entry: 1
+      # Match field tc_unknown
+      match {
+        field_id: 2
+        field_name: "tc_unknown"
+        exact {
+          value: "\x00"
+        }
+      }
+      # Match field slice_tc
+      match {
+        field_id: 1
+        field_name: "slice_tc"
+        ternary {
+          value: "\x00"
+          mask: "\x3C"
+        }
+      }
+      # Action FabricIngress.qos.set_default_tc
+      action {
+        action {
+          action_id: 23587909
+          action_name: "FabricIngress.qos.set_default_tc"
+          # Param tc
+          params {
+            param_id: 1
+            param_name: "tc"
+            value: "\x00"
+          }
+        }
+      }
+    }
+  },
+  # Table FabricIngress.qos.queues
+  {
+    table_entry {
+      table_id: 36435258
+      table_name: "FabricIngress.qos.queues"
+      priority: 10
+      is_valid_entry: 1
+      # Match field slice_tc
+      match {
+        field_id: 1
+        field_name: "slice_tc"
+        exact {
+          value: "\x00"
+        }
+      }
+      # Match field color
+      match {
+        field_id: 2
+        field_name: "color"
+        ternary {
+          value: "\x00"
+          mask: "\x00"
+        }
+      }
+      # Action FabricIngress.qos.set_queue
+      action {
+        action {
+          action_id: 32116918
+          action_name: "FabricIngress.qos.set_queue"
+          # Param qid
+          params {
+            param_id: 1
+            param_name: "qid"
+            value: "\x00"
+          }
+        }
+      }
+    }
+  }
+]
