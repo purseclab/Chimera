@@ -1,0 +1,4 @@
+[submodule "p4c"]
+	path = p4c
+	url = https://github.com/kjw6855/p4c.git
+	branch = p4fuzzer
